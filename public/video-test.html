@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Test</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .video-background video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .content h1 {
+      font-size: 5rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #ff6b6b, #ffd93d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .content p {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #ff6b6b, #ffd93d);
+      border: none;
+      border-radius: 50px;
+      color: #000;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+    }
+
+    .debug-info {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 12px;
+      z-index: 999;
+    }
+
+    .debug-info p {
+      margin: 5px 0;
+      font-size: 12px;
+    }
+
+    .status-dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 5px;
+    }
+
+    .status-dot.loading {
+      background: yellow;
+    }
+
+    .status-dot.playing {
+      background: green;
+    }
+
+    .status-dot.error {
+      background: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="video-background">
+    <video 
+      id="bgVideo"
+      autoplay 
+      loop 
+      muted 
+      playsinline
+      preload="auto"
+    >
+      <source src="/videos/classic.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <div class="content">
+    <h1>RIDE Classic</h1>
+    <p>The original energy rush that started it all</p>
+    <button class="btn">Get Energized</button>
+  </div>
+
+  <div class="debug-info" id="debugInfo">
+    <p><span class="status-dot loading" id="statusDot"></span> <span id="status">Loading...</span></p>
+    <p>Video Path: <span id="videoPath">/videos/classic.mp4</span></p>
+    <p>Video State: <span id="videoState">-</span></p>
+    <p>Error: <span id="errorMsg">None</span></p>
+  </div>
+
+  <script>
+    const video = document.getElementById('bgVideo');
+    const statusDot = document.getElementById('statusDot');
+    const status = document.getElementById('status');
+    const videoState = document.getElementById('videoState');
+    const errorMsg = document.getElementById('errorMsg');
+
+    // Video event listeners
+    video.addEventListener('loadstart', () => {
+      console.log('Video loading started...');
+      status.textContent = 'Loading video...';
+      videoState.textContent = 'loadstart';
+    });
+
+    video.addEventListener('loadedmetadata', () => {
+      console.log('Video metadata loaded');
+      videoState.textContent = 'metadata loaded';
+      console.log('Duration:', video.duration);
+      console.log('Video dimensions:', video.videoWidth, 'x', video.videoHeight);
+    });
+
+    video.addEventListener('loadeddata', () => {
+      console.log('Video data loaded');
+      status.textContent = 'Video loaded successfully!';
+      statusDot.className = 'status-dot playing';
+      videoState.textContent = 'data loaded';
+    });
+
+    video.addEventListener('canplay', () => {
+      console.log('Video can start playing');
+      videoState.textContent = 'can play';
+    });
+
+    video.addEventListener('playing', () => {
+      console.log('Video is playing');
+      status.textContent = 'Video playing!';
+      statusDot.className = 'status-dot playing';
+      videoState.textContent = 'playing';
+    });
+
+    video.addEventListener('error', (e) => {
+      console.error('Video error:', e);
+      console.error('Error code:', video.error?.code);
+      console.error('Error message:', video.error?.message);
+      
+      let errorText = 'Unknown error';
+      if (video.error) {
+        switch(video.error.code) {
+          case 1: errorText = 'MEDIA_ERR_ABORTED - Playback aborted'; break;
+          case 2: errorText = 'MEDIA_ERR_NETWORK - Network error'; break;
+          case 3: errorText = 'MEDIA_ERR_DECODE - Decode error'; break;
+          case 4: errorText = 'MEDIA_ERR_SRC_NOT_SUPPORTED - Source not supported'; break;
+        }
+      }
+      
+      status.textContent = 'Video failed to load!';
+      statusDot.className = 'status-dot error';
+      videoState.textContent = 'error';
+      errorMsg.textContent = errorText;
+    });
+
+    video.addEventListener('stalled', () => {
+      console.warn('Video stalled');
+      videoState.textContent = 'stalled';
+    });
+
+    video.addEventListener('waiting', () => {
+      console.log('Video waiting for data');
+      videoState.textContent = 'waiting';
+    });
+
+    // Try to play the video
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          console.log('Autoplay started successfully');
+        })
+        .catch(error => {
+          console.error('Autoplay failed:', error);
+          errorMsg.textContent = 'Autoplay blocked: ' + error.message;
+        });
+    }
+  </script>
+</body>
+</html>
