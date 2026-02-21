@@ -1,116 +1,255 @@
 'use client';
+
 import Image from 'next/image';
+
 export default function Footer() {
-
-
   return (
     <footer
       id="contact"
-      className="text-white bg-[url('/images/all.jpg')] bg-cover bg-[center_80%] bg-no-repeat "
+      style={{ background: '#050508', position: 'relative', overflow: 'hidden' }}
     >
-      <div className="bg-black/60 backdrop-blur-xs">
+      {/* Background image with overlay */}
+      <div style={{
+        position: 'absolute', inset: 0,
+        backgroundImage: "url('/images/all.jpg')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center 80%',
+        opacity: 0.08,
+      }} />
 
-        <div className="container mx-auto px-4 py-16">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+      {/* Grid texture */}
+      <div style={{
+        position: 'absolute', inset: 0, opacity: 0.04,
+        backgroundImage: `linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px)`,
+        backgroundSize: '40px 40px',
+      }} />
 
-            {/* 1. Company Info */}
+      {/* Top border */}
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(90deg, transparent, rgba(255,31,61,0.5), transparent)' }} />
+
+      <div style={{ position: 'relative', zIndex: 2 }}>
+        {/* Newsletter strip */}
+        <div style={{
+          background: 'rgba(255,31,61,0.08)',
+          borderBottom: '1px solid rgba(255,31,61,0.15)',
+          padding: '2.5rem 2rem',
+        }}>
+          <div style={{ maxWidth: '700px', margin: '0 auto', textAlign: 'center' }}>
+            <h3 style={{
+              fontFamily: "'Bebas Neue', sans-serif",
+              fontSize: '2rem', color: 'white', margin: '0 0 0.5rem 0',
+              letterSpacing: '0.05em',
+            }}>
+              STAY IN THE LOOP
+            </h3>
+            <p style={{ fontFamily: "'Rajdhani', sans-serif", color: 'rgba(255,255,255,0.5)', marginBottom: '1.5rem', fontWeight: 500 }}>
+              Get exclusive deals, new flavor alerts, and RIDE news delivered straight to you.
+            </p>
+            <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <input
+                type="email"
+                placeholder="your@email.com"
+                style={{
+                  background: 'rgba(255,255,255,0.06)',
+                  border: '1px solid rgba(255,255,255,0.12)',
+                  borderRadius: '4px', padding: '0.75rem 1.25rem',
+                  color: 'white', fontFamily: "'Rajdhani', sans-serif",
+                  fontSize: '1rem', minWidth: '260px',
+                  outline: 'none',
+                }}
+              />
+              <button
+                className="btn-ride btn-primary"
+                style={{ fontSize: '0.7rem', padding: '0.75rem 2rem' }}
+              >
+                <span>Subscribe →</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Main footer */}
+        <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '4rem 2rem' }}>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+            gap: '3rem',
+            marginBottom: '3rem',
+          }}>
+
+            {/* Brand */}
             <div>
-              <div className="flex items-center gap-2 mb-6">
-                
-                <span className="text-2xl font-bold">RIDE</span>
+              <div style={{ marginBottom: '1.5rem' }}>
+                <img src="/images/ride.jpg" alt="RIDE" style={{ height: '44px', borderRadius: '4px' }} />
               </div>
-              <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                Everyone's got their own unique way of life and Ride gives you the power to live your life the way you want
+              <p style={{
+                fontFamily: "'Rajdhani', sans-serif",
+                color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, fontSize: '0.95rem', fontWeight: 500,
+                marginBottom: '1.5rem',
+              }}>
+                Everyone's got their own unique way of life and RIDE gives you the power to live it the way you want.
               </p>
-              {/* Social Media (Moved here often looks good, but I will keep it with Contact or separate if preferred. I'll stick to plan: Col 4 has contact info + socials) */}
-              <div className="flex gap-4">
-<div className="flex gap-4">
-  <a
-    href="https://www.facebook.com/p/Ride-Energy-Drink-61551394352392/"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-white transition-all hover:scale-110"
-  >
-    <Image
-      src="/images/facebook.png"
-      alt="Facebook"
-      width={20}
-      height={20}
-      className="object-contain"
-    />
-  </a>
 
-  <a
-    href="https://www.instagram.com/rideenergydrink/?hl=en"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-white transition-all hover:scale-110"
-  >
-    <Image
-      src="/images/instagram.png"
-      alt="Instagram"
-      width={20}
-      height={20}
-      className="object-contain"
-    />
-  </a>
-</div>
-
-                
+              {/* Socials */}
+              <div style={{ display: 'flex', gap: '0.75rem' }}>
+                <a
+                  href="https://www.facebook.com/p/Ride-Energy-Drink-61551394352392/"
+                  target="_blank" rel="noopener noreferrer"
+                  style={{
+                    width: '40px', height: '40px',
+                    background: 'rgba(255,255,255,0.05)',
+                    border: '1px solid rgba(255,255,255,0.1)',
+                    borderRadius: '8px',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    transition: 'all 0.3s ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,31,61,0.5)';
+                    (e.currentTarget as HTMLElement).style.boxShadow = '0 0 20px rgba(255,31,61,0.2)';
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.1)';
+                    (e.currentTarget as HTMLElement).style.boxShadow = 'none';
+                  }}
+                >
+                  <Image src="/images/facebook.png" alt="Facebook" width={18} height={18} style={{ objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
+                </a>
+                <a
+                  href="https://www.instagram.com/rideenergydrink/?hl=en"
+                  target="_blank" rel="noopener noreferrer"
+                  style={{
+                    width: '40px', height: '40px',
+                    background: 'rgba(255,255,255,0.05)',
+                    border: '1px solid rgba(255,255,255,0.1)',
+                    borderRadius: '8px',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    transition: 'all 0.3s ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,31,61,0.5)';
+                    (e.currentTarget as HTMLElement).style.boxShadow = '0 0 20px rgba(255,31,61,0.2)';
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.1)';
+                    (e.currentTarget as HTMLElement).style.boxShadow = 'none';
+                  }}
+                >
+                  <Image src="/images/instagram.png" alt="Instagram" width={18} height={18} style={{ objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
+                </a>
               </div>
             </div>
 
-            {/* 2. Quick Links */}
+            {/* Quick Links */}
             <div>
-              <h4 className="font-bold text-lg mb-6">Quick Links</h4>
-              <ul className="space-y-3 text-gray-300 text-base">
-                <li><a href="#home" className="hover:text-white transition-colors">Home</a></li>
-                <li><a href="#products" className="hover:text-white transition-colors">Products</a></li>
-                <li><a href="#features" className="hover:text-white transition-colors">Features</a></li>
-                <li><a href="#news" className="hover:text-white transition-colors">News</a></li>
+              <h4 style={{
+                fontFamily: "'Orbitron', sans-serif",
+                fontSize: '0.7rem', letterSpacing: '0.25em',
+                color: '#FF1F3D', marginBottom: '1.5rem', textTransform: 'uppercase',
+              }}>
+                Quick Links
+              </h4>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                {[
+                  { label: 'Home', id: 'home' },
+                  { label: 'Products', id: 'products' },
+                  { label: 'Why RIDE', id: 'why-ride' },
+                  { label: 'Where to Buy', id: 'where-to-buy' },
+                  { label: 'News', id: 'news' },
+                ].map(link => (
+                  <li key={link.id}>
+                    <button
+                      onClick={() => document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' })}
+                      style={{
+                        background: 'none', border: 'none', cursor: 'pointer', padding: 0,
+                        fontFamily: "'Rajdhani', sans-serif",
+                        fontSize: '1rem', color: 'rgba(255,255,255,0.5)',
+                        fontWeight: 600, transition: 'color 0.2s ease',
+                        display: 'flex', alignItems: 'center', gap: '0.5rem',
+                      }}
+                      onMouseEnter={(e) => (e.currentTarget.style.color = 'white')}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.5)')}
+                    >
+                      <span style={{ color: 'rgba(255,31,61,0.5)', fontSize: '0.7rem' }}>→</span>
+                      {link.label}
+                    </button>
+                  </li>
+                ))}
               </ul>
             </div>
 
-            {/* 3. Legal */}
+            {/* Legal */}
             <div>
-              <h4 className="font-bold text-lg mb-6">Legal</h4>
-              <ul className="space-y-3 text-gray-300 text-base">
-                <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Terms of Service</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Cookie Policy</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Refund Policy</a></li>
+              <h4 style={{
+                fontFamily: "'Orbitron', sans-serif",
+                fontSize: '0.7rem', letterSpacing: '0.25em',
+                color: '#00D4FF', marginBottom: '1.5rem', textTransform: 'uppercase',
+              }}>
+                Legal
+              </h4>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                {['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Refund Policy'].map(item => (
+                  <li key={item}>
+                    <a
+                      href="#"
+                      style={{
+                        fontFamily: "'Rajdhani', sans-serif",
+                        fontSize: '1rem', color: 'rgba(255,255,255,0.5)',
+                        fontWeight: 600, textDecoration: 'none', transition: 'color 0.2s ease',
+                        display: 'flex', alignItems: 'center', gap: '0.5rem',
+                      }}
+                      onMouseEnter={(e) => (e.currentTarget.style.color = 'white')}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.5)')}
+                    >
+                      <span style={{ color: 'rgba(0,212,255,0.5)', fontSize: '0.7rem' }}>→</span>
+                      {item}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
 
-            {/* 4. Contact Information */}
+            {/* Contact */}
             <div>
-              <h4 className="font-bold text-lg mb-6">Contact Us</h4>
-              <div className="space-y-4 text-gray-300 text-base">
-                <div className="flex items-start gap-3">
-                  <span className="text-xl">📍</span>
-                  <p>No. 40, York Street, Colombo 01</p>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-xl">📧</span>
-                  <a href="mailto:info@RIDEenergy.com" className="hover:text-white transition-colors">contact@cargillsceylon.com</a>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-xl">📞</span>
-                  <a href="tel:+15551234567" className="hover:text-white transition-colors">
-+94 11 242 7777<br/>+94 11 242 7500</a>
-                </div>
+              <h4 style={{
+                fontFamily: "'Orbitron', sans-serif",
+                fontSize: '0.7rem', letterSpacing: '0.25em',
+                color: '#00FF88', marginBottom: '1.5rem', textTransform: 'uppercase',
+              }}>
+                Contact
+              </h4>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                {[
+                  { icon: '📍', text: 'No. 40, York Street, Colombo 01' },
+                  { icon: '📧', text: 'contact@cargillsceylon.com' },
+                  { icon: '📞', text: '+94 11 242 7777\n+94 11 242 7500' },
+                ].map(({ icon, text }) => (
+                  <div key={text} style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
+                    <span style={{ fontSize: '1rem', marginTop: '2px', flexShrink: 0 }}>{icon}</span>
+                    <span style={{
+                      fontFamily: "'Rajdhani', sans-serif",
+                      fontSize: '0.95rem', color: 'rgba(255,255,255,0.5)',
+                      fontWeight: 500, lineHeight: 1.5, whiteSpace: 'pre-line',
+                    }}>
+                      {text}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
-
           </div>
 
           {/* Copyright */}
-          <div className="text-center pt-8 border-t border-gray-800">
-            <p className="text-gray-300 text-base">
+          <div style={{
+            paddingTop: '2rem',
+            borderTop: '1px solid rgba(255,255,255,0.06)',
+            display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+            flexWrap: 'wrap', gap: '1rem',
+          }}>
+            <p style={{ fontFamily: "'Rajdhani', sans-serif", color: 'rgba(255,255,255,0.3)', fontSize: '0.9rem', margin: 0, fontWeight: 500 }}>
               © 2026 RIDE Energy Drinks. All rights reserved.
             </p>
-                       <p className="text-gray-300 text-base">
-              Designed by Dhananajaya Dilshan
+            <p style={{ fontFamily: "'Orbitron', sans-serif", color: 'rgba(255,31,61,0.4)', fontSize: '0.6rem', letterSpacing: '0.15em', margin: 0 }}>
+              DESIGNED BY DHANANAJAYA DILSHAN
             </p>
           </div>
         </div>
