@@ -16,7 +16,7 @@ export default function Footer() {
             {/* 1. Company Info */}
             <div>
               <div className="flex items-center gap-2 mb-6">
-                <span className="text-4xl">⚡</span>
+                
                 <span className="text-2xl font-bold">RIDE</span>
               </div>
               <p className="text-gray-300 text-lg leading-relaxed mb-6">

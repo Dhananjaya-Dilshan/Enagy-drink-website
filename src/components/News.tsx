@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 // News data
 const newsArticles = [
@@ -49,16 +49,48 @@ const newsArticles = [
 
 export default function News() {
   const [selectedNews, setSelectedNews] = useState<typeof newsArticles[0] | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
   return (
     <>
       <section
         id="news"
         className="min-h-screen py-20 bg-indigo-50"
+        ref={sectionRef}
       >
         <div className="container mx-auto px-4">
           {/* Section Header */}
-          <div className="text-center mb-16">
+          <div
+            className={`text-center mb-16 transition-all duration-1000 ${
+              isVisible
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-10'
+            }`}
+          >
             <h2 className="text-5xl font-bold mb-4">
               Latest News
             </h2>

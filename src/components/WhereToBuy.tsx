@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
 interface WhereToBuyProps {
     selectedProductId?: string | null;
@@ -47,6 +47,32 @@ const retailers = [
 ];
 
 export default function WhereToBuy({ selectedProductId }: WhereToBuyProps) {
+    const [isVisible, setIsVisible] = useState(false);
+    const sectionRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                }
+            },
+            {
+                threshold: 0.1,
+            }
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => {
+            if (sectionRef.current) {
+                observer.unobserve(sectionRef.current);
+            }
+        };
+    }, []);
+
     useEffect(() => {
         if (selectedProductId) {
             const element = document.getElementById('where-to-buy');
@@ -86,10 +112,17 @@ export default function WhereToBuy({ selectedProductId }: WhereToBuyProps) {
             <section
                 id="where-to-buy"
                 className="min-h-screen py-20 bg-gradient-to-b from-gray-50 to-white"
+                ref={sectionRef}
             >
                 <div className="container mx-auto px-4">
                     {/* Section Header */}
-                    <div className="text-center mb-16">
+                    <div
+                        className={`text-center mb-16 transition-all duration-1000 ${
+                            isVisible
+                                ? 'opacity-100 translate-y-0'
+                                : 'opacity-0 translate-y-10'
+                        }`}
+                    >
                         <div className="inline-block mb-4">
                             <span className="text-6xl float-animation">📍</span>
                         </div>
