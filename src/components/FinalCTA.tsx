@@ -141,7 +141,7 @@ export default function FinalCTA() {
               clipPath: 'polygon(16px 0%, 100% 0%, calc(100% - 16px) 100%, 0% 100%)',
               animation: 'glowPulse 2s ease-in-out infinite',
               transition: 'transform 0.3s ease',
-              fontSize: '0.9rem',
+              
             }}
             onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05) translateY(-2px)')}
             onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1) translateY(0)')}
