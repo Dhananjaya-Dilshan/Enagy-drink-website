@@ -132,10 +132,10 @@ export default function Hero() {
         display: 'grid', gridTemplateColumns: '1fr 1fr',
         alignItems: 'center', maxWidth: '1400px', margin: '0 auto', padding: '0 2rem',
         gap: '4rem',
-      }} className="flex-col-mobile">
+      }} className="hero-content-grid">
 
         {/* LEFT: Text */}
-        <div style={{ paddingTop: '80px' }}>
+        <div style={{ paddingTop: '80px' }} className="hero-text-col">
           {/* Category label */}
           <div style={{
             display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
@@ -262,11 +262,12 @@ export default function Hero() {
         <div style={{
           display: 'flex', justifyContent: 'center', alignItems: 'center',
           position: 'relative', paddingTop: '80px',
-        }} className="hidden md:flex">
+        }} className="hero-can-wrapper">
           {/* Glow behind can */}
           <div style={{
             position: 'absolute',
-            width: '400px', height: '400px',
+            width: 'clamp(200px, 40vw, 400px)',
+            height: 'clamp(200px, 40vw, 400px)',
             borderRadius: '50%',
             background: `radial-gradient(circle, ${slide.accent}30 0%, transparent 70%)`,
             transition: 'background 0.8s ease',
@@ -279,7 +280,8 @@ export default function Hero() {
             style={{
               position: 'relative', zIndex: 2,
               animation: 'float 4s ease-in-out infinite, fadeIn 0.6s ease-out',
-              width: '280px', height: '420px',
+              width: 'clamp(160px, 30vw, 280px)',
+              height: 'clamp(240px, 45vw, 420px)',
             }}
           >
             <img
@@ -304,7 +306,7 @@ export default function Hero() {
           </div>
 
           {/* Floating label badges */}
-          <div style={{
+          <div className="hero-badge" style={{
             position: 'absolute', top: '25%', right: '-10px',
             background: 'rgba(20,20,28,0.9)',
             border: `1px solid ${slide.accent}40`,
@@ -370,9 +372,28 @@ export default function Hero() {
       </div>
 
       <style jsx>{`
+        .hero-content-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .hero-can-wrapper {
+          display: flex;
+        }
+        .hero-badge {
+          display: block;
+        }
         @media (max-width: 768px) {
-          .flex-col-mobile {
+          .hero-content-grid {
             grid-template-columns: 1fr !important;
+            gap: 0 !important;
+          }
+          .hero-can-wrapper {
+            display: none !important;
+          }
+          .hero-text-col {
+            padding-top: 0 !important;
+          }
+          .hero-badge {
+            display: none;
           }
         }
       `}</style>
