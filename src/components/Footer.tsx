@@ -112,7 +112,7 @@ export default function Footer() {
                     (e.currentTarget as HTMLElement).style.boxShadow = 'none';
                   }}
                 >
-                  <Image src="/images/facebook.png" alt="Facebook" width={18} height={18} style={{ objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
+                  <Image src="/facebook.png" alt="Facebook" width={18} height={18} />
                 </a>
                 <a
                   href="https://www.instagram.com/rideenergydrink/?hl=en"
@@ -134,7 +134,7 @@ export default function Footer() {
                     (e.currentTarget as HTMLElement).style.boxShadow = 'none';
                   }}
                 >
-                  <Image src="/images/instagram.png" alt="Instagram" width={18} height={18} style={{ objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
+                  <Image src="/images/instagram.png" alt="Instagram" width={18} height={18}  />
                 </a>
               </div>
             </div>
