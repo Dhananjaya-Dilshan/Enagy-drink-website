@@ -112,7 +112,7 @@ export default function Footer() {
                     (e.currentTarget as HTMLElement).style.boxShadow = 'none';
                   }}
                 >
-                  <Image src="/facebook.png" alt="Facebook" width={18} height={18} />
+                  <Image src="/images/facebook.png" alt="Facebook" width={18} height={18} />
                 </a>
                 <a
                   href="https://www.instagram.com/rideenergydrink/?hl=en"
