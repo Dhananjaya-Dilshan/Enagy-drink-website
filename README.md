@@ -1,7 +1,6 @@
 # RIDE Energy Drink - Landing Page
 
-A modern, responsive marketing website for RIDE Energy, a premium caffeinated beverage brand from Kist in Sri Lanka. Built with Next.js and TypeScript, featuring smooth animations, interactive product showcases, and seamless user experience.
-
+A modern, responsive marketing website for RIDE Energy, a beverage brand in Sri Lanka. Built with Next.js and TypeScript, featuring smooth animations, interactive product showcases, and seamless user experience.
 
 ## 🌟 Features
 
