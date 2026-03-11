@@ -1,6 +1,8 @@
 # RIDE Energy Drink - Landing Page
 
-A modern, responsive marketing website for RIDE Energy, a beverage brand in Sri Lanka. Built with Next.js and TypeScript, featuring smooth animations, interactive product showcases, and seamless user experience.
+A modern, responsive marketing website for RIDE Energy, a  beverage brand from Kist in Sri Lanka. Built with Next.js and TypeScript, featuring smooth animations, interactive product showcases, and seamless user experience.
+
+![RIDE Energy Drink](./public/images/hero-preview.png)
 
 ## 🌟 Features
 
@@ -9,22 +11,18 @@ A modern, responsive marketing website for RIDE Energy, a beverage brand in Sri 
 - **Store Locator** - Find RIDE products at major retailers across Sri Lanka (Cargills, Keells, Glomark)
 - **News & Updates** - Dynamic news section with modal popups for detailed articles
 - **Fully Responsive** - Optimized experience across desktop, tablet, and mobile devices
-- **Performance Optimized** - Built with Next.js 16 for fast load times and smooth interactions
 
 ## 🚀 Tech Stack
 
 - **Framework:** Next.js 16.1.6
 - **Language:** TypeScript
 - **Styling:** TailwindCSS
-- **UI Components:** React 19
-- **Image Optimization:** Next.js Image Component
-- **Animations:** CSS Transitions & Intersection Observer API
 
 ## 📦 Installation
 
 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/ride-energy-drink.git
+git clone https://github.com/Dhananjaya-Dilshan/Enagy-drink-website.git
 cd ride-energy-drink
 ```
 
@@ -45,9 +43,6 @@ yarn dev
 # or
 pnpm dev
 ```
-
-
-
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
