@@ -1,18 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# RIDE Energy Drink - Landing Page
 
-## Getting Started
+A modern, responsive marketing website for RIDE Energy, a premium caffeinated beverage brand from Kist in Sri Lanka. Built with Next.js and TypeScript, featuring smooth animations, interactive product showcases, and seamless user experience.
 
-First, run the development server:
+![RIDE Energy Drink](./public/images/hero-preview.png)
 
+## 🌟 Features
+
+- **Interactive Product Showcase** - Browse through product lineup with detailed nutritional information and flavor profiles
+- **Smooth Scroll Animations** - Engaging scroll-triggered animations throughout the site
+- **Store Locator** - Find RIDE products at major retailers across Sri Lanka (Cargills, Keells, Glomark)
+- **News & Updates** - Dynamic news section with modal popups for detailed articles
+- **Fully Responsive** - Optimized experience across desktop, tablet, and mobile devices
+- **Performance Optimized** - Built with Next.js 16 for fast load times and smooth interactions
+
+## 🚀 Tech Stack
+
+- **Framework:** Next.js 16.1.6
+- **Language:** TypeScript
+- **Styling:** TailwindCSS
+- **UI Components:** React 19
+- **Image Optimization:** Next.js Image Component
+- **Animations:** CSS Transitions & Intersection Observer API
+
+## 📦 Installation
+
+1. Clone the repository
+```bash
+git clone https://github.com/yourusername/ride-energy-drink.git
+cd ride-energy-drink
+```
+
+2. Install dependencies
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+3. Run the development server
 ```bash
 npm run dev
 # or
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
+
+
+
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
