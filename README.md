@@ -2,7 +2,7 @@
 
 A modern, responsive marketing website for RIDE Energy, a  beverage brand from Kist in Sri Lanka. Built with Next.js and TypeScript, featuring smooth animations, interactive product showcases, and seamless user experience.
 
-![Screenshot of the hero seaction of the site]([https://myoctocat.com/assets/images/base-octocat.svg](https://portfolio-eight-lake-tkkkgzmiye.vercel.app/Screenshot%20(160).png))
+![Screenshot of the hero seaction of the site](https://github.com/Dhananjaya-Dilshan/Enagy-drink-website/blob/5a577f344f60098ebe1f83c839a34580ce0ccc46/0303(17).png)
 ## 🌟 Features
 
 - **Interactive Product Showcase** - Browse through product lineup with detailed nutritional information and flavor profiles
